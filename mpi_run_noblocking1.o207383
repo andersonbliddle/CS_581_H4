@@ -1,0 +1,43 @@
+setting asax scratch directory
+ 
+============================================================
+=====         Summary of your script job               =====
+============================================================
+  The script file is: myscript_noblocking.sh
+  The time limit is 12:00:00 HH:MM:SS.
+  The target directory is: /home/ualclsd0173/CS_581_H4
+  The working directory is:  /scratch-local/ualclsd0173.mpi_run_noblocking1.207383.asax-pbs1
+  The memory limit is: 20gb
+  The job will start running after: 202411081539.03
+  Job Name: mpi_run_noblocking1
+  Queue: -q class -W group_list=classq
+  Constraints: 
+  Using  20  cores on master node  asax020.asc.edu
+  Node list:  asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu
+  Cores:  20
+  Command typed:
+/scripts/run_script_mpi myscript_noblocking.sh     
+  Queue submit command:
+qsub -q class -W group_list=classq -j oe -N mpi_run_noblocking1 -a 202411081539.03 -r n -M abliddle@crimson.ua.edu -l walltime=12:00:00 -l select=20:mpiprocs=1:mem=1000mb 
+ 
+Time taken = 270.759341 seconds
+Time taken = 172.969240 seconds
+Time taken = 70.548231 seconds
+Time taken = 35.607265 seconds
+Time taken = 28.978240 seconds
+Time taken = 18.778310 seconds
+Time taken = 15.550244 seconds
+Time taken = 276.018900 seconds
+Time taken = 136.246827 seconds
+Time taken = 68.988347 seconds
+Time taken = 35.551233 seconds
+Time taken = 28.915291 seconds
+Time taken = 18.748458 seconds
+Time taken = 15.371706 seconds
+Time taken = 270.566133 seconds
+Time taken = 172.865117 seconds
+Time taken = 69.415846 seconds
+Time taken = 35.537694 seconds
+Time taken = 28.880132 seconds
+Time taken = 18.705358 seconds
+Time taken = 15.408417 seconds
