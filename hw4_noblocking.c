@@ -1,9 +1,19 @@
 /*
- * Game of Life MPI Implementation
- * Adapted from Anderson B. Liddle's OpenMP implementation
- * To Compile: mpicc -Wall -O3 -o anderson_mpi anderson_mpi.c
- * To Run: mpiexec -n <num_threads> ./anderson_mpi <dimensions> <MAX_GEN> <num_threads> <output_directory> <stagnationcheck>
- */
+NON-BLOCKING VERSION OF CODE
+ Name: Anderson B. Liddle
+ Email: abliddle@crimson.ua.edu
+ Course Section: CS 581
+ Homework # 4
+ Instructions to compile the program: mpicc -g -Wall -o hw4 hw4.c
+ Instructions to run the program: mpiexec -n NUM_THREADS ./hw3 
+                                    <dimensions (int)>
+                                    <max_generations (int)>
+                                    <num_threads (int)>
+                                    <output directory (string)>
+                                    <stagnationcheck (boolean 1 or 0)>
+ Please use this format for testing:  mpiexec -n 4 ./hw4 1000 1000 4 ./ 1
+ GITHUB LINK - https://github.com/andersonbliddle/CS_581_H4
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
