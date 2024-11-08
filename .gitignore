@@ -3,3 +3,5 @@ output1000_1000_8.txt
 init*
 hw4
 hw4_noblocking
+non-blocking-output5000_5000_20.txt
+non-blocking-output1000_1000_20.txt
