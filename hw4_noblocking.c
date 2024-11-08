@@ -162,7 +162,7 @@ int main(int argc, char **argv) {
 
     // Output file and directory (format output_N_N_gen_threads.txt)
     char output_file[200];
-    sprintf(output_file, "%s/output%s_%s_%s.txt", argv[4], argv[1], argv[2], argv[3]);
+    sprintf(output_file, "%s/non-blocking-output%s_%s_%s.txt", argv[4], argv[1], argv[2], argv[3]);
 
     // Verify number of processes
     if (num_threads != size) {
@@ -240,19 +240,39 @@ int main(int argc, char **argv) {
 
     // Flag to store whether the board state has changed or not
     int global_changed = 1;
+
+    // Storage arrays for communicatation
+    // 2 sends, 2 recieves, so four total
+    MPI_Request requests[4];  
+    MPI_Status statuses[4];
     
     // Iteration loop for main logic. Endes after required number of generations
     for (gen = 1; gen <= MAX_GEN; gen++) {
+        // Counter for active requests
+        int req_count = 0;
+
         // Exchange ghost rows with neighboring processes, passing both upwards and downwards
+        // THIS IS THE NON BLOCKING VERSION
         if (rank > 0) {
-            MPI_Sendrecv(current[1], total_cols, MPI_INT, rank - 1, 0,
-                        current[0], total_cols, MPI_INT, rank - 1, 1,
-                        MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            // Send top row to previous process
+            MPI_Isend(current[1], total_cols, MPI_INT, rank - 1, 0,
+                     MPI_COMM_WORLD, &requests[req_count++]);
+            // Receive from previous process into top ghost row
+            MPI_Irecv(current[0], total_cols, MPI_INT, rank - 1, 1,
+                     MPI_COMM_WORLD, &requests[req_count++]);
         }
         if (rank < size - 1) {
-            MPI_Sendrecv(current[local_rows], total_cols, MPI_INT, rank + 1, 1,
-                        current[local_rows + 1], total_cols, MPI_INT, rank + 1, 0,
-                        MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            // Send bottom row to next process
+            MPI_Isend(current[local_rows], total_cols, MPI_INT, rank + 1, 1,
+                     MPI_COMM_WORLD, &requests[req_count++]);
+            // Receive from next process into bottom ghost row
+            MPI_Irecv(current[local_rows + 1], total_cols, MPI_INT, rank + 1, 0,
+                     MPI_COMM_WORLD, &requests[req_count++]);
+        }
+
+        // Wait for all non-blocking communications to complete
+        if (req_count > 0) {
+            MPI_Waitall(req_count, requests, statuses);
         }
 
         // Updating grid based on cell values
