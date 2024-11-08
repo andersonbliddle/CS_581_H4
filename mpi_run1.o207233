@@ -1,0 +1,43 @@
+setting asax scratch directory
+ 
+============================================================
+=====         Summary of your script job               =====
+============================================================
+  The script file is: myscript.sh
+  The time limit is 12:00:00 HH:MM:SS.
+  The target directory is: /home/ualclsd0173/CS_581_H4
+  The working directory is:  /scratch-local/ualclsd0173.mpi_run1.207233.asax-pbs1
+  The memory limit is: 20gb
+  The job will start running after: 202411081201.44
+  Job Name: mpi_run1
+  Queue: -q class -W group_list=classq
+  Constraints: 
+  Using  20  cores on master node  asax020.asc.edu
+  Node list:  asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu asax020.asc.edu
+  Cores:  20
+  Command typed:
+/scripts/run_script_mpi myscript.sh     
+  Queue submit command:
+qsub -q class -W group_list=classq -j oe -N mpi_run1 -a 202411081201.44 -r n -M abliddle@crimson.ua.edu -l walltime=12:00:00 -l select=20:mpiprocs=1:mem=1000mb 
+ 
+Time taken = 1322.862913 seconds
+Time taken = 685.734669 seconds
+Time taken = 333.725914 seconds
+Time taken = 169.052764 seconds
+Time taken = 140.692660 seconds
+Time taken = 86.534690 seconds
+Time taken = 70.229625 seconds
+Time taken = 1320.030472 seconds
+Time taken = 684.827496 seconds
+Time taken = 338.844190 seconds
+Time taken = 168.936450 seconds
+Time taken = 135.433787 seconds
+Time taken = 86.167456 seconds
+Time taken = 69.842708 seconds
+Time taken = 1320.906441 seconds
+Time taken = 687.779732 seconds
+Time taken = 333.494023 seconds
+Time taken = 168.975950 seconds
+Time taken = 140.808914 seconds
+Time taken = 86.761751 seconds
+Time taken = 70.654819 seconds
