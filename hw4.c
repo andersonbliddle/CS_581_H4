@@ -40,13 +40,13 @@ void initarray(int **a, int rows, int cols) {
 
 // Randomizes the grid with 0s or 1s to create a random initial state
 int** genzero(int** array, int rows, int cols){
-  srand(42);  // Fixed seed for reproducibility
-  //unsigned int seed = 1;
+  //srand(42);  // Fixed seed for reproducibility
+  unsigned int seed = 1;
   int i,j;
 
   for (i = 1; i < rows - 1; i++)
     for (j = 1; j < cols - 1; j++)
-      array[i][j] = rand() % 2;
+      array[i][j] = rand_r(&seed) % 2;
   
   return array;
 }
