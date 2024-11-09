@@ -160,7 +160,7 @@ int main(int argc, char **argv) {
     // Boolean for turning on and off stagnation check
     int stagnationcheck = atoi(argv[5]);
 
-    // Output file and directory (format output_N_N_gen_threads.txt)
+    // Output file and directory
     char output_file[200];
     sprintf(output_file, "%s/non-blocking-output%s_%s_%s.txt", argv[4], argv[1], argv[2], argv[3]);
 
